@@ -1,0 +1,14 @@
+﻿1) Write a SQL query that finds all travel agents that does not have any observations.
+
+SELECT TravelAgent.*
+FROM TravelAgent
+LEFT JOIN Observation ON TravelAgent.TravelAgent = Observation.TravelAgent
+WHERE Observation.TravelAgent IS NULL;
+
+2) Write a SQL query that finds all travel agents that have more than two observations.
+
+SELECT TravelAgent.TravelAgent, COUNT(Observation.TravelAgent) AS ObservationCount
+FROM TravelAgent
+JOIN Observation ON TravelAgent.TravelAgent = Observation.TravelAgent
+GROUP BY TravelAgent.TravelAgent
+HAVING COUNT(Observation.TravelAgent) > 2;
